@@ -725,3 +725,15 @@ body {
         grid-template-columns: 1fr; /* Single column on phones */
     }
 }
+.exit-icon {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    cursor: pointer;
+}
+
+.exit-icon img {
+    width: 20px;
+    height: 20px;
+}
+
