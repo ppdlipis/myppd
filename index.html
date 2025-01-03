@@ -178,32 +178,40 @@
     </div>
 
 <script>
+document.addEventListener("DOMContentLoaded", function() {
     // Get the hamburger icon, sidebar, and card grid container
     const hamburger = document.querySelector('.hamburger');
     const sidebar = document.querySelector('.sidebar');
     const cardGrid = document.querySelector('.card-grid');
 
+    // Function to adjust grid layout based on sidebar visibility
+    function adjustGridLayout() {
+        if (window.innerWidth <= 768) {
+            // On small screens, set grid to 2x4 regardless of sidebar visibility
+            cardGrid.style.gridTemplateColumns = 'repeat(2, 1fr)';
+        } else {
+            // On larger screens, always set grid to 4x2
+            cardGrid.style.gridTemplateColumns = 'repeat(4, 1fr)';
+        }
+    }
+
+    // Adjust layout on page load
+    adjustGridLayout();
+
     // Add event listener for when the hamburger is clicked
     hamburger.addEventListener('click', function() {
         sidebar.classList.toggle('visible'); // Toggle sidebar visibility
-
-        // Toggle between 4x2 and 2x4 grid layout
-        if (sidebar.classList.contains('visible')) {
-            cardGrid.style.gridTemplateColumns = 'repeat(3, 1fr)'; // 2x4 layout when sidebar is visible
-        } else {
-            cardGrid.style.gridTemplateColumns = 'repeat(3, 1fr)'; // 4x2 layout when sidebar is hidden
-        }
+        adjustGridLayout(); // Adjust grid layout based on sidebar visibility
     });
 
-    // Handle window resizing to reset sidebar visibility and grid layout on larger screens
+    // Handle window resizing to reset sidebar visibility and grid layout
     window.addEventListener('resize', function() {
         if (window.innerWidth > 768) {
             sidebar.classList.add('visible'); // Sidebar always visible on larger screens
-            cardGrid.style.gridTemplateColumns = 'repeat(4, 1fr)'; // Default 4 columns on larger screens
         } else {
             sidebar.classList.remove('visible'); // Sidebar hidden by default on small screens
-            cardGrid.style.gridTemplateColumns = 'repeat(4, 1fr)'; // Reset to 4x2 grid on smaller screens
         }
+        adjustGridLayout(); // Adjust grid layout based on screen size
     });
 
     // Search functionality
@@ -221,13 +229,23 @@
                 card.style.display = 'none'; // Hide card
             }
         });
-		
-		window.onload = function() {
-		const container = document.querySelector('.card-container');
-		container.style.display = 'grid'; // Reset display if needed
-		};
-
     });
+
+    // Ensure 2 cards per row when scrolling
+    function maintainTwoCardsPerRow() {
+        if (window.innerWidth <= 768) {
+            // On small screens, ensure two cards per row
+            cardGrid.style.gridTemplateColumns = 'repeat(2, 1fr)';
+        }
+    }
+
+    // Listen for scroll events to dynamically adjust the grid layout
+    window.addEventListener('scroll', maintainTwoCardsPerRow);
+
+    // Also ensure the layout remains correct on initial page load
+    window.addEventListener('load', maintainTwoCardsPerRow);
+});
+
 </script>
 
 
