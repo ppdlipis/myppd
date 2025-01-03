@@ -1,0 +1,814 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PEGAWAI PPDL</title>
+    <link rel="stylesheet" href="style.css">
+	<style>
+/* Search Icon and Box Styling */
+.search-container {
+    position: fixed;
+    top: 70px; /* Adjust this value to place the icon a bit lower */
+    right: 20px; /* Place it near the right edge */
+    z-index: 80; /* Ensure it stays above other content */
+    background-color: #f0f0f0; /* Light grey background */
+    padding: 10px; /* Optional: Add padding around the icon */
+    border-radius: 50%; /* Make it circular */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* Optional: Shadow for effect */
+    display: flex;
+    align-items: center;
+    justify-content: center; /* Ensures icon is centered within the circle */
+}
+
+/* Style for the search icon */
+.search-icon {
+    font-size: 16px; /* Smaller icon size */
+    width: 20px; /* Ensure the width is set */
+    height: 20px; /* Ensure the height is set */
+    color: black; /* Icon color */
+    cursor: pointer; /* Indicate clickability */
+    line-height: 20px; /* Vertically center the icon */
+    text-align: center; /* Horizontally center the icon */
+}
+
+.search-btn, .close-btn {
+    height: 40px;
+    width: 40px;
+    background-color: #007BFF;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 18px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.3s ease;
+}
+
+
+/* Search box styling */
+.search-box {
+    display: flex;
+	align-items: center;
+    position: fixed;
+    top: 110px; /* Position the search box below the search icon */
+    left: 50%; /* Position the search box at the horizontal center */
+    transform: translateX(-50%); /* Adjust to exactly center the box */
+    background: white;
+    border: 1px solid #ccc;
+    padding: 10px;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    width: 420px; /* Width to avoid being squeezed */
+    max-width: none; /* Remove max-width to allow it to be its normal size */
+    box-sizing: border-box; /* Makes sure padding is included in the total width */
+}
+
+/* Input field inside the search box */
+.search-box input {
+    width: 100%; /* Ensure the input field takes full width */
+    padding: 8px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+
+/* Button inside the search box */
+.search-box button {
+    margin-left: 5px;
+    padding: 5px 10px;
+    background-color: #007bff; /* Blue background for the button */
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+/* Close button inside the search box */
+.search-box #close-search {
+    margin-left: 5px;
+    padding: 5px 10px;
+    background-color: #f44336; /* Red color for close button */
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.search-box button:hover,
+.search-box #close-search:hover {
+    opacity: 0.8; /* Button hover effect */
+}
+
+/* Style for the input field */
+#search-input {
+    flex: 1;
+    width: 300px; /* Adjust width */
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+}
+/* Class for hiding non-essential content when search results are shown */
+.hide-content {
+    display: none;
+}
+
+/* Centering the search result container */
+.search-result-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding: 20px;
+    box-sizing: border-box;
+    width: 80%;  /* Adjust the width */
+    max-width: 1000px;
+    text-align: center;
+}
+
+#refresh-icon {
+    cursor: pointer; /* Makes the cursor a pointer when hovering over the refresh icon */
+}
+
+    </style>
+</head>
+<body>
+
+	
+
+    <!-- Footer at the top -->
+    <div class="footer">
+        <p>DATA DAN MAKLUMAT ADALAH SULIT</p>
+    </div>
+	
+<!-- Search Functionality -->
+<div class="search-container">
+    <img src="image/refresh.png" alt="Refresh" class="refresh-icon" id="refresh-icon"> <!-- Refresh Button -->
+    <img src="image/search-icon.png" alt="Search" class="search-icon" id="search-icon">
+    <div class="search-box" id="search-box">
+        <input type="text" id="search-input" placeholder="Search Pegawai Name...">
+        <button id="search-btn">Search</button>
+
+    </div>
+</div>
+
+
+    <!-- Hamburger Icon (appears on mobile) -->
+    <div class="hamburger">
+        <img src="image/hamburger.png" alt="Hamburger Menu">
+    </div>
+
+    <div class="container">
+        <!-- Sidebar Navigation -->
+<!-- Sidebar Navigation -->
+<nav class="sidebar">
+    <!-- PPD Logo -->
+    <div class="logo-container">
+        <img src="image/logoppd.png" alt="PPD Logo">
+    </div>
+
+<ul>
+    <li><a href="index.html">HOME</a></li>
+    <li><a href="profil.html">Profil PPD</a></li>
+    <li><a href="egerak.html">eGERAK</a></li>
+    <li><a href="pegawaippd.html">Pegawai PPD Lipis</a></li>
+</ul>
+
+</nav>
+
+
+        <!-- Main Content Area -->
+<!-- Main Content Area -->
+<main class="content">
+
+        
+        <!-- Organizational Sectors -->
+<div class="org-chart-section">
+    <div class="sector-container">
+        <h2 class="sector-title"> PEJABAT PENDIDIKAN DAERAH LIPIS </h2>
+        <div class="timbalan-grid">
+            <div class="timbalan-card">
+                <img src="image/TUANAMIN1.jpg" alt="Staff Photo">
+                <h4>AMIN NOLLAH BIN LATEH</h4>
+				 <p>KETUA PEGAWAI  PENDIDIKAN DAERAH</p>
+            </div>            
+        </div>
+    </div>
+	
+    <div class="sector-container">
+        <h2 class="sector-title">SEKTOR PEMBANGUNAN MURID</h2>
+	<div class="timbalan-grid">
+        <div class="timbalan-card">
+            <img src="image/PEMBANGUNANMURIDHUSSAINI1.jpg" alt="Hussaini Photo">
+            <h4>HUSSAINI BIN HAJI IBRAHIM</h4>
+            <p>TIMBALAN PEGAWAI PENDIDIKAN DAERAH</p>
+        </div>
+    </div>
+        <div class="staff-grid">
+                        
+			<div class="staff-card">
+                <img src="image/PEMBANGUNANMURIDADE1.jpg" alt="Staff Photo">
+                <h4>ADE IZZUAN BIN ABU BAKAR</h4>
+				<p>PENOLONG PPD - HAL EHWAL MURID</p>
+            </div>			
+			<div class="staff-card">
+                <img src="image/PEMBANGUNANMURIDFIRDUS1.jpg" alt="Staff Photo">
+                <h4>MOHD FIRDUS BIN MOHD NASIR</h4>
+				<p>PENOLONG PPD - PEMBANGUNAN BAKAT MURID</p>
+            </div>
+			<div class="staff-card">
+                <img src="image/SAZRIL1.jpg" alt="Staff Photo">
+                <h4>MOHAMMAD SAZRIL BIN ISMAIL</h4>
+				<p>PEMBANTU TADBIR</p>
+            </div>
+            <!-- Repeat for additional staff -->
+        </div>
+    </div>
+
+    <div class="sector-container">
+        <h2 class="sector-title">SEKTOR KEWANGAN</h2>
+	<div class="timbalan-grid">
+        <div class="timbalan-card">
+            <img src="image/KEWANGANHELIZA1.jpg" alt="Hussaini Photo">
+            <h4>NOOR HELIZA BINTI MOHD ZIN</h4>
+            <p>KETUA PEMBANTU TADBIR</p>
+        </div>
+    </div>
+        <div class="staff-grid">
+			<div class="staff-card">
+                <img src="image/KEWANGANHAZLIANA1.jpg" alt="Staff Photo">
+                <h4>NOR HAZLIANA BINTI HARITH</h4>
+				<p>PEMBANTU TADBIR (KEW)</p>
+            </div>	
+			<div class="staff-card">
+                <img src="image/KEWANGANNORASLINDA1.jpg" alt="Staff Photo">
+                <h4>NORASLINDA BINTI DAUD</h4>
+				<p>PEGAWAI EKSEKUTIF KANAN</p>
+            </div>			
+			<div class="staff-card">
+                <img src="image/KEWANGANROSNAINI.jpg" alt="Staff Photo">
+                <h4>WAN ROSNAINI BINTI WAN ABD HUSIN</h4>
+				<p>PEGAWAI EKSEKUTIF</p>
+            </div>
+						
+			<div class="staff-card">
+                <img src="image/KEWANGANRUSLIZA1.jpg" alt="Staff Photo">
+                <h4>RUSLIZA BINTI RASID</h4>
+				<p>PENOLONG AKAUNTAN</p>
+            </div>
+			<div class="staff-card">
+                <img src="image/NOORFARINA1.jpg" alt="Staff Photo">
+                <h4>NOORFARINA BINTI MOHD YUSOFF</h4>
+				<p>PENOLONG AKAUNTAN</p>
+            </div>
+			<div class="staff-card">
+                <img src="image/RAFIZAN1.jpg" alt="Staff Photo">
+                <h4>MOHAMAD RAFIZAN BIN BAHARUM</h4>
+				<p>PENOLONG JURUTERA</p>
+            </div>
+			<div class="staff-card">
+                <img src="image/SYAHZAN1.jpg" alt="Staff Photo">
+                <h4>MUHAMMAD SYAHZAN BIN HASHIM</h4>
+				<p>PENOLONG JURUTERA</p>
+            </div>
+			
+			<div class="staff-card">
+                <img src="image/SULIZA1.jpg" alt="Staff Photo">
+                <h4>SULIZA BINTI MAT PIAH</h4>
+				<p>PEMBANTU TADBIR</p>
+            </div>
+			<div class="staff-card">
+                <img src="image/ARIZZAL1.jpg" alt="Staff Photo">
+                <h4>MOHD NUUR ALARIZZAL BIN HAZIMI</h4>
+				<p>PEMBANTU TADBIR</p>
+            </div>
+            <!-- Add more cards here -->
+        </div>
+    </div>
+
+    <div class="sector-container">
+        <h2 class="sector-title">SEKTOR PENGURUSAN</h2>
+		
+	<div class="timbalan-grid">
+        <div class="timbalan-card">
+            <img src="image/SEKTORPENGURUSANZUHARNI1.jpg" alt="Hussaini Photo">
+            <h4>ZUHARNI BINTI ABDUL MALEK</h4>
+            <p>PEGAWAI EKSEKUTIF TINGGI</p>
+        </div>
+    </div>
+	
+        <div class="staff-grid">
+			<div class="staff-card">
+                <img src="image/HRROZILAH1.jpg" alt="Staff Photo">
+                <h4>ROZILAH BINTI BUSU</h4>
+				<p>KETUA PEMBANTU TADBIR</p>
+            </div>
+			<div class="staff-card">
+                <img src="image/NAZZRUL1.jpg" alt="Staff Photo">
+                <h4>MOHAMMAD NAZZRUL HAFIZZ BIN MOHD SABRUL</h4>
+				<p>PEGAWAI EKSEKUTIF</p>
+            </div>
+			<div class="staff-card">
+                <img src="image/HRAFIZAN1.jpg" alt="Staff Photo">
+                <h4>AFIZAN BINTI JUSOH</h4>
+				<p>PEMBANTU TADBIR</p>
+            </div>
+			
+			<div class="staff-card">
+                <img src="image/NORZEHAN1.jpg" alt="Staff Photo">
+                <h4>NORZEHAN BINTI ABDULLAH</h4>
+				<p>PEMBANTU TADBIR</p>
+            </div>
+			<div class="staff-card">
+                <img src="image/AMINAH1.jpg" alt="Staff Photo">
+                <h4>SITI AMINAH BINTI SALEH</h4>
+				<p>PEMBANTU TADBIR</p>
+            </div>			
+			<div class="staff-card">
+                <img src="image/SYIFA1.jpg" alt="Staff Photo">
+                <h4>FAIRUZ SYIFA BINTI MOHD FADZIL</h4>
+				<p>PEMBANTU TADBIR</p>
+            </div>
+			<div class="staff-card">
+                <img src="image/HAZWANI1.jpg" alt="Staff Photo">
+                <h4>NUR HAZWANI BINTI HAMADAN</h4>
+				<p>PEMBANTU TADBIR</p>
+            </div>
+			<div class="staff-card">
+                <img src="image/SHAHIRA1.jpg" alt="Staff Photo">
+                <h4>NURUL SHAHIRA BINTI AHMAD BAKRI</h4>
+				<p>PEMBANTU OPERASI</p>
+            </div>
+			
+			<div class="staff-card">
+                <img src="image/zaidi.jpg" alt="Staff Photo">
+                <h4> MUHAMAD ZAIDI BIN ALANG AHMAD</h4>
+				<p>PEMANDU KENDERAAN</p>
+            </div>
+			<div class="staff-card">
+                <img src="image/NURHADIRAH.jpg" alt="Staff Photo">
+                <h4> SH. NURHADIRAH BINTI WAN FAUZAN</h4>
+				<p>KHIDMAT PELANGGAN</p>
+            </div>
+            <!-- Add more cards here -->
+        </div>
+    </div>
+
+    <div class="sector-container">
+        <h2 class="sector-title">SEKTOR PEMBELAJARAN</h2>
+		
+	<div class="timbalan-grid">
+        <div class="timbalan-card">
+            <img src="image/PEMBELAJARANDANIAR1.jpg" alt="Hussaini Photo">
+            <h4>AHMAD DANIAR BIN ISMAIL</h4>
+            <p>TIMBALAN PEGAWAI PENDIDIKAN DAERAH</p>
+        </div>
+    </div>
+	
+        <div class="staff-grid">
+			<div class="staff-card">
+                <img src="image/PEMBELAJARANANUAR1.jpg" alt="Staff Photo">
+                <h4>ANUAR BIN ISMAIL</h4>
+				<p>PENOLONG PPD -PENDIDIKAN ISLAM</p>
+            </div>
+			<div class="staff-card">
+                <img src="image/PEMBELAJARANFELZA1.jpg" alt="Staff Photo">
+                <h4>FELZA ZUL MUSA'AD BIN ABD HAMID</h4>
+				<p>PENOLONG PPD -PENDIDIKAN ISLAM</p>
+            </div>
+			<div class="staff-card">
+                <img src="image/PEMBELAJARANZURAHANA1.jpg" alt="Staff Photo">
+                <h4>ZURAHANA BINTI KASSIM</h4>
+				<p>PENOLONG PPD -PEMULIHAN KHAS</p>
+            </div>
+			<div class="staff-card">
+                <img src="image/PEMBELAJARANZARINA1.jpg" alt="Staff Photo">
+                <h4>ZARINA BINTI AHMAD TERMIZI</h4>
+				<p>PENOLONG PPD -PEMULIHAN KHAS</p>
+            </div>
+			<div class="staff-card">
+                <img src="image/FAIRUS1.jpg" alt="Staff Photo">
+                <h4>SITI FAIRUS BINTI RAZALLY</h4>
+				<p>SISC+ SAINS DAN MATEMATIK</p>
+            </div>
+			<div class="staff-card">
+                <img src="image/PEMBELAJARANSALASIAH1.jpg" alt="Staff Photo">
+                <h4>SALASIAH BINTI SABRAN</h4>
+				<p>SISC+ BAHASA</p>
+            </div>
+			<div class="staff-card">
+                <img src="image/PEMBELAJARANMOKHZANI1.jpg" alt="Staff Photo">
+                <h4>MOKHZANI BIN FADIR</h4>
+				<p>SISC+ BAHASA</p>
+            </div>
+			
+			<div class="staff-card">
+                <img src="image/PEMBELAJARANMUZAIMI1.jpg" alt="Staff Photo">
+                <h4>MUZAIMI BIN MOHAMED ISA</h4>
+				<p>SISC+ TVET</p>
+            </div>
+			<div class="staff-card">
+                <img src="image/PEMBELAJARANKHAIRI1.jpg" alt="Staff Photo">
+                <h4>MUHAMMAD KHAIRI BIN ABDUL RAHMAN</h4>
+				<p>PENOLONG PPD -PENDIDIKAN KHAS</p>
+            </div>
+			<div class="staff-card">
+                <img src="image/SOLEHUDDIN1.jpg" alt="Staff Photo">
+                <h4>MUHAMMAD SOLEHUDDIN BIN MOHD YUNUS</h4>
+				<p>PENOLONG PPD -PENDIDIKAN KHAS</p>
+            </div>
+			<div class="staff-card">
+                <img src="image/PEMBELAJARANAZAM1.jpg" alt="Staff Photo">
+                <h4>MOHAMAD AZAM BIN HAMZAH </h4>
+				<p>PENOLONG PPD - SUMBER & TEKNOLOGI PENDIDIKAN</p>
+            </div>
+			<div class="staff-card">
+                <img src="image/PEMBELAJARANRADZEY1.jpg" alt="Staff Photo">
+                <h4>RADZEY ZAIDI BIN ZAINUDIN</h4>
+				<p>PENOLONG PPD - SUMBER & TEKNOLOGI PENDIDIKAN</p>
+            </div>
+			<div class="staff-card">
+                <img src="image/HISYAM1.jpg" alt="Staff Photo">
+                <h4>MOHD NORHISHAM BIN ABDUL RAHMAN</h4>
+				<p>PENOLONG PPD - SUMBER & TEKNOLOGI PENDIDIKAN</p>
+            </div>
+			<div class="staff-card">
+                <img src="image/PEMBELAJARANSHAHRIL1.jpg" alt="Staff Photo">
+                <h4>MOHD SHAHRIL SHAFIZ BIN MOHD SAINI</h4>
+				<p>PENOLONG PEGAWAI TEKNOLOGI MAKLUMAT</p>
+            </div>
+			<div class="staff-card">
+                <img src="image/PEMBELAJARANFADIL1.jpg" alt="Staff Photo">
+                <h4>MOHD FADIL BIN MOHD SAKRI</h4>
+				<p>PENOLONG PEGAWAI TEKNOLOGI MAKLUMAT</p>
+            </div>
+			
+			<div class="staff-card">
+                <img src="image/REDZUAN1.jpg" alt="Staff Photo">
+                <h4>MOHD REDZUAN BIN MAMAT</h4>
+				<p>PENOLONG PPD -PEMULIHAN KHAS</p>
+            </div>
+			<div class="staff-card">
+                <img src="image/NAJIHA1.jpg" alt="Staff Photo">
+                <h4>NAJIHA BINTI NAMLUR</h4>
+				<p>PENOLONG PPD -PEMULIHAN KHAS</p>
+            </div>
+			
+            <!-- Add more cards here -->
+        </div>
+    </div>
+
+    <div class="sector-container">
+        <h2 class="sector-title">SEKTOR PENGURUSAN SEKOLAH</h2>
+		
+	<div class="timbalan-grid">
+        <div class="timbalan-card">
+            <img src="image/PENGURUSANSEKOLAHZULFAKRI1.jpg" alt="Hussaini Photo">
+            <h4>ZULFAKHRI BIN IDRIS</h4>
+            <p>TIMBALAN PEGAWAI PENDIDIKAN DAERAH</p>
+        </div>
+    </div>
+        <div class="staff-grid">
+            
+			<div class="staff-card">
+                <img src="image/PENGURUSANSEKOLAHBAKRI1.jpg" alt="Staff Photo">
+                <h4>MOHAMAD BAKRI BIN ABDULLAH</h4>
+				<p>SIP+</p>
+            </div>
+			<div class="staff-card">
+                <img src="image/PENGURUSANSEKOLAHASYRAF1.jpg" alt="Staff Photo">
+                <h4>ASYRAF BIN LOKMAN</h4>
+				<p>PENOLONG PPD - PRASEKOLAH & RENDAH</p>
+            </div>
+			<div class="staff-card">
+                <img src="image/PENGURUSANSEKOLAHHAFIZUL1.jpg" alt="Staff Photo">
+                <h4>HAFIZUL RAHMAN BIN MUHAMAD</h4>
+				<p>PENOLONG PPD - PRASEKOLAH & RENDAH</p>
+            </div>
+			<div class="staff-card">
+                <img src="image/PENGURUSANSEKOLAHADLAN1.jpg" alt="Staff Photo">
+                <h4>MOHD ADLAN BIN JALIL</h4>
+				<p>PENOLONG PPD - PRASEKOLAH & RENDAH</p>
+            </div>
+
+			<div class="staff-card">
+                <img src="image/PENGURUSANSEKOLAHAFFANDY1.jpg" alt="Staff Photo">
+                <h4>MOHD AFFANDY BIN ZAINUDDIN</h4>
+				<p>PENOLONG PPD - MENENGAH & TING. 6</p>
+            </div>
+			<div class="staff-card">
+                <img src="image/HUMAIZI1.jpg" alt="Staff Photo">
+                <h4>AHMAD HUMAIZI BIN RAZALI</h4>
+				<p>PENOLONG PPD - MENENGAH & TING. 6</p>
+            </div>
+			<div class="staff-card">
+                <img src="image/HAFIZAH1.jpg" alt="Staff Photo">
+                <h4>NURHAFIZAH BINTI AMAT</h4>
+				<p>PENOLONG PPD - PRASEKOLAH & RENDAH</p>
+            </div>
+			<div class="staff-card">
+                <img src="image/PENGURUSANSEKOLAHZAIMI1.jpg" alt="Staff Photo">
+                <h4>MOHD ZAIMI BIN ZAINAL</h4>
+				<p>PENOLONG PPD - PENDIDIKAN SWASTA</p>
+            </div>
+			
+			
+            <!-- Add more cards here -->
+        </div>
+    </div>
+
+    <div class="sector-container">
+        <h2 class="sector-title">SEKTOR PERANCANGAN</h2>
+		
+	<div class="timbalan-grid">
+        <div class="timbalan-card">
+            <img src="image/PERANCANGANZULHAIRI1.jpg" alt="Hussaini Photo">
+            <h4>ZULHAIRI BIN AKOB</h4>
+            <p>TIMBALAN PEGAWAI PENDIDIKAN DAERAH</p>
+        </div>
+    </div>
+        <div class="staff-grid">
+			<div class="staff-card">
+                <img src="image/PERANCANGANSYAFIRUL1.jpg" alt="Staff Photo">
+                <h4>SYAFIRULHAFIZAN BIN HASHIM</h4>
+				<p>PENOLONG PPD -PERANCANGAN</p>
+            </div>
+			<div class="staff-card">
+                <img src="image/PERANCANGANROHAYA1.jpg" alt="Staff Photo">
+                <h4>ROHAYA BINTI ALIAS</h4>
+				<p>PENOLONG PPD -PERANCANGAN</p>
+            </div>
+			<div class="staff-card">
+                <img src="image/QURRATUL1.jpg" alt="Staff Photo">
+                <h4>QURRATUL AINIYAH BINTI KAHLIB</h4>
+				<p>PEMBANTU TADBIR</p>
+            </div>
+            
+        </div>
+    </div>    
+	
+	<div class="sector-container">
+        <h2 class="sector-title">SEKTOR PENTAKSIRAN & PEPERIKSAAN</h2>
+        <div class="staff-grid">
+            <div class="staff-card">
+                <img src="image/KHAIRUL1.jpg" alt="Staff Photo">
+                <h4>KHAIRUL HISHAM BIN UDIN</h4>
+				<p>PENOLONG PPD- PEPERIKSAAN</p>
+            </div>
+			<div class="staff-card">
+                <img src="image/MUAZAM1.png" alt="Staff Photo">
+                <h4>MUAZAM BIN MOHKTAR</h4>
+				<p>PENOLONG PPD -PERANCANGAN</p>
+            </div>
+			
+            
+        </div>
+    </div>
+	<div class="sector-container">
+        <h2 class="sector-title">PASUKAN TEKNIKAL ICT SEKOLAH</h2>
+        <div class="staff-grid">
+            <div class="staff-card">
+                <img src="image/alongmuhd1.jpg" alt="Staff Photo">
+                <h4>MUHAMMAD SAMIUN BIN MAT DERIS @ YEH</h4>
+				<p>PENOLONG PEGAWAI TEKNOLOGI MAKLUMAT (PPD LIPIS)</p>
+            </div>
+			<div class="staff-card">
+                <img src="image/sabri1.jpg" alt="Staff Photo">
+                <h4>MOHAMAD SABRI BIN MUADI</h4>
+				<p>PENOLONG PEGAWAI TEKNOLOGI MAKLUMAT (PKG LIPIS)</p>
+            </div>
+			<div class="staff-card">
+                <img src="image/azim1.jpg" alt="Staff Photo">
+                <h4>MOHAMMAD AZIM BIN RIFIN</h4>
+				<p>PENOLONG PEGAWAI TEKNOLOGI MAKLUMAT (PKG LIPIS)</p>
+            </div>
+			<div class="staff-card">
+                <img src="image/amira1.jpg" alt="Staff Photo">
+                <h4>NURUL AMIRA BINTI ANUAR</h4>
+				<p>PENOLONG PEGAWAI TEKNOLOGI MAKLUMAT (PKG BENTA)</p>
+            </div>
+			<div class="staff-card">
+                <img src="image/zam1.jpg" alt="Staff Photo">
+                <h4>ZAMAHARI BIN MUHAMAD</h4>
+				<p>PENOLONG PEGAWAI TEKNOLOGI MAKLUMAT (PKG BENTA)</p>
+            </div>
+			<div class="staff-card">
+                <img src="image/haris1.jpg" alt="Staff Photo">
+                <h4>MOHAMMAD HARIS BIN SALLEH</h4>
+				<p>PENOLONG PEGAWAI TEKNOLOGI MAKLUMAT (PKG PADANG TENGKU)</p>
+            </div>
+			<div class="staff-card">
+                <img src="image/zakiah1.jpg" alt="Staff Photo">
+                <h4>ZAKIAH BINTI IBRAHIM</h4>
+				<p>PENOLONG PEGAWAI TEKNOLOGI MAKLUMAT (PKG PADANG TENGKU)</p>
+            </div>
+			<div class="staff-card">
+                <img src="image/meso1.jpg" alt="Staff Photo">
+                <h4>SHAMSUL HAZIZUL BIN ABDUL AZIZ</h4>
+				<p>PENOLONG PEGAWAI TEKNOLOGI MAKLUMAT (PKG PADANG TENGKU)</p>
+            </div>
+			<div class="staff-card">
+                <img src="image/fahzan1.jpg" alt="Staff Photo">
+                <h4>MOHAMMAD FAKHZAN BIN MOHAMMAD NOR</h4>
+				<p>PENOLONG PEGAWAI TEKNOLOGI MAKLUMAT (PKG PADANG TENGKU)</p>
+            </div>
+			<div class="staff-card">
+                <img src="image/mariam1.jpg" alt="Staff Photo">
+                <h4>SITI MARIAM BINTI JUSOH</h4>
+				<p>PENOLONG PEGAWAI TEKNOLOGI MAKLUMAT (PKG PADANG TENGKU)</p>
+            </div>
+			<div class="staff-card">
+                <img src="image/unknown1.jpg" alt="Staff Photo">
+                <h4>IMRAN BIN OTHMAN BAZAR</h4>
+				<p>JURUTEKNIK KOMPUTER (PKG BENTA)</p>
+            </div>
+			<div class="staff-card">
+                <img src="image/nazim1.jpg" alt="Staff Photo">
+                <h4>MOHAMMAD NAZIM BIN ROSLI</h4>
+				<p>JURUTEKNIK KOMPUTER (PKG LIPIS)</p>
+            </div>
+			<div class="staff-card">
+                <img src="image/hazwan1.jpg" alt="Staff Photo">
+                <h4>MOHAMMAD HAZWAN BIN MOHAMMAD YUNUS@MUHAMMAD</h4>
+				<p>JURUTEKNIK KOMPUTER (PKG LIPIS)</p>
+            </div>
+			<div class="staff-card">
+                <img src="image/yasser1.jpg" alt="Staff Photo">
+                <h4>MOHAMMAD YASSER BIN MOHAMMAD ZAINI</h4>
+				<p>JURUTEKNIK KOMPUTER (PKG LIPIS)</p>
+            </div>
+			<div class="staff-card">
+                <img src="image/kamil1.jpg" alt="Staff Photo">
+                <h4>MUHAMMAD KAMIL BIN SANUSI</h4>
+				<p>JURUTEKNIK KOMPUTER (PKG LIPIS)</p>
+            </div>			
+			<div class="staff-card">
+                <img src="image/yasmin.jpg" alt="Staff Photo">
+                <h4>YASMIN FATIN BINTI MUSTAFA</h4>
+				<p>JURUTEKNIK KOMPUTER (PKG LIPIS)</p>
+            </div>
+			
+			
+			
+            <!-- Add more cards here -->
+        </div>
+    </div>
+</div>
+
+
+    <!-- Footer -->
+
+
+<script>
+// Hamburger Menu Toggle (unchanged)
+const hamburger = document.querySelector('.hamburger');
+const sidebar = document.querySelector('.sidebar');
+hamburger.addEventListener('click', function () {
+    sidebar.classList.toggle('visible');
+});
+
+window.addEventListener('resize', function () {
+    if (window.innerWidth > 768) {
+        sidebar.classList.add('visible');
+    } else {
+        sidebar.classList.remove('visible');
+    }
+});
+
+// Search Functionality
+const searchIcon = document.getElementById('search-icon');
+const searchBox = document.getElementById('search-box');
+const searchBtn = document.getElementById('search-btn'); // Correct reference to button
+const refreshIcon = document.getElementById('refresh-icon'); // Reference to refresh icon
+
+// Show search box on search icon click
+searchIcon.addEventListener('click', () => {
+    searchBox.style.display = 'flex'; // Show the search box
+});
+
+// Hide search box when clicking outside it
+document.addEventListener('click', (event) => {
+    if (!searchBox.contains(event.target) && !searchIcon.contains(event.target)) {
+        const searchInput = document.getElementById('search-input');
+        searchInput.value = ""; // Clear search input
+        searchBox.style.display = 'none'; // Hide the search box
+    }
+});
+
+// Perform search functionality across both staff and timbalan cards
+function searchAllContent() {
+    const searchValue = document.getElementById('search-input').value.toLowerCase().trim();
+    console.log("Search Value:", searchValue); // Log the search input for debugging
+
+    // Check if the search input is empty
+    if (searchValue === "") {
+        alert('Please enter a search term.');
+        return; // Don't proceed with search if input is empty
+    }
+
+    const sectorContainers = document.querySelectorAll('.sector-container'); // Select all sector containers
+    const staffCards = document.querySelectorAll('.staff-card'); // Select all staff cards
+    const timbalanCards = document.querySelectorAll('.timbalan-card'); // Select all timbalan cards
+    let hasResults = false;
+
+    // Hide all sector containers before starting the search
+    sectorContainers.forEach(container => {
+        container.style.display = 'none'; // Hide sector containers by default
+    });
+
+    // Search within staff cards
+    staffCards.forEach(card => {
+        const cardText = card.textContent.toLowerCase(); // Get all text content inside the staff card
+        console.log('Checking Staff Card:', cardText);  // Log the content of each staff card
+
+        // If the search term is found within the card's text
+        if (cardText.includes(searchValue)) {
+            console.log('Found in Staff Card:', card); // Log the card that matched
+            card.style.display = 'block'; // Show the card
+            hasResults = true;
+
+            // Show the parent container if a result is found
+            const parentContainer = card.closest('.sector-container');
+            if (parentContainer) {
+                parentContainer.style.display = 'block'; // Show the sector container
+            }
+        } else {
+            card.style.display = 'none'; // Hide the card
+        }
+    });
+
+    // Search within timbalan cards
+    timbalanCards.forEach(card => {
+        const cardText = card.textContent.toLowerCase(); // Get all text content inside the timbalan card
+        console.log('Checking Timbalan Card:', cardText); // Log the content of each timbalan card
+
+        // If the search term is found within the card's text
+        if (cardText.includes(searchValue)) {
+            console.log('Found in Timbalan Card:', card); // Log the card that matched
+            card.style.display = 'block'; // Show the card
+            hasResults = true;
+
+            // Show the parent container if a result is found
+            const parentContainer = card.closest('.sector-container');
+            if (parentContainer) {
+                parentContainer.style.display = 'block'; // Show the sector container
+            }
+        } else {
+            card.style.display = 'none'; // Hide the card
+        }
+    });
+
+    // If no results found, alert the user
+    if (!hasResults) {
+        alert('No results found for: ' + searchValue); // Alert if no results
+    }
+}
+
+// Attach the search function to the search button
+searchBtn.addEventListener('click', searchAllContent);
+
+// Allow "Enter" key press to trigger the search
+const searchInput = document.getElementById('search-input');
+searchInput.addEventListener('keypress', (event) => {
+    if (event.key === 'Enter') {
+        searchAllContent();
+    }
+});
+
+// Reset the search and display all content
+refreshIcon.addEventListener('click', () => {
+    // Select all sector containers and cards
+    const sectorContainers = document.querySelectorAll('.sector-container'); // Select all sector containers
+    const staffCards = document.querySelectorAll('.staff-card'); // Select all staff cards
+    const timbalanCards = document.querySelectorAll('.timbalan-card'); // Select all timbalan cards
+
+    // Show all sector containers by default
+    sectorContainers.forEach(container => {
+        container.style.display = 'block'; // Make sure all sector containers are visible
+    });
+
+    // Show all staff cards and timbalan cards
+    staffCards.forEach(card => {
+        card.style.display = 'block'; // Show all staff cards
+    });
+
+    timbalanCards.forEach(card => {
+        card.style.display = 'block'; // Show all timbalan cards
+    });
+
+    // Clear the search input field
+    searchInput.value = ""; // Reset the search input
+
+    // Optionally, hide the search box again if it's still visible
+    searchBox.style.display = 'none'; // Hide the search box if desired
+});
+</script>
+
+
+
+
+
+</body>
+</html>
