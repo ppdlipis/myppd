@@ -27,6 +27,9 @@
         <!-- Sidebar Navigation -->
 		<!-- Sidebar Navigation -->
 	<nav class="sidebar">
+			<div class="exit-icon">
+        <img src="image/cross.png" alt="Exit">
+    </div>
 		<!-- PPD Logo -->
     <div class="logo-container">
         <img src="image/logoppd.png" alt="PPD Logo">
@@ -183,6 +186,7 @@ document.addEventListener("DOMContentLoaded", function() {
     const hamburger = document.querySelector('.hamburger');
     const sidebar = document.querySelector('.sidebar');
     const cardGrid = document.querySelector('.card-grid');
+    const exitIcon = document.querySelector('.exit-icon'); // Get exit icon
 
     // Function to adjust grid layout based on sidebar visibility
     function adjustGridLayout() {
@@ -202,6 +206,12 @@ document.addEventListener("DOMContentLoaded", function() {
     hamburger.addEventListener('click', function() {
         sidebar.classList.toggle('visible'); // Toggle sidebar visibility
         adjustGridLayout(); // Adjust grid layout based on sidebar visibility
+    });
+
+    // Add event listener for the exit icon click to hide the sidebar
+    exitIcon.addEventListener('click', function() {
+        sidebar.classList.remove('visible'); // Hide sidebar
+        adjustGridLayout(); // Adjust grid layout after hiding sidebar
     });
 
     // Handle window resizing to reset sidebar visibility and grid layout
